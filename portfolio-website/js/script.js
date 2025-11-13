@@ -6,11 +6,26 @@ hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("show");
 });
 
-// Theme Toggle
 const themeToggle = document.getElementById("themeToggle");
+
+// Load saved theme on page load
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark-mode");
+  themeToggle.textContent = "☀️";
+}
+
+// Toggle theme on click
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
-  themeToggle.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+
+  // Save theme
+  if (document.body.classList.contains("dark-mode")) {
+    localStorage.setItem("theme", "dark");
+    themeToggle.textContent = "☀️";
+  } else {
+    localStorage.setItem("theme", "light");
+    themeToggle.textContent = "🌙";
+  }
 });
 
 // Dynamic Project Loading
@@ -67,7 +82,7 @@ if (projectContainer) {
       link: "#"
     },
     {
-      title: "Project Three",
+      title: "I AM DAME",
       images: [
         "images/IMG_3426.jpg",
 "images/IMG_3435.jpg",
